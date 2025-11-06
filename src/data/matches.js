@@ -1,0 +1,32 @@
+export const matches = [
+  {
+    id: 1,
+    homeTeam: "Barcelona",
+    awayTeam: "Real Madrid",
+    homeScore: 2,
+    awayScore: 1,
+    time: "85'",
+    status: "Live",
+    league: "La Liga",
+  },
+  {
+    id: 2,
+    homeTeam: "Arsenal",
+    awayTeam: "Manchester City",
+    homeScore: 1,
+    awayScore: 3,
+    time: "FT",
+    status: "Finished",
+    league: "Premier League",
+  },
+  {
+    id: 3,
+    homeTeam: "PSG",
+    awayTeam: "Bayern Munich",
+    homeScore: 0,
+    awayScore: 0,
+    time: "19:00",
+    status: "Upcoming",
+    league: "Champions League",
+  },
+];

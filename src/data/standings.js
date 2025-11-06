@@ -1,0 +1,48 @@
+// src/data/standings.js
+export const standings = [
+  {
+    rank: 1,
+    team: "Real Madrid",
+    played: 12,
+    wins: 9,
+    draws: 2,
+    losses: 1,
+    points: 29,
+  },
+  {
+    rank: 2,
+    team: "FC Barcelona",
+    played: 12,
+    wins: 8,
+    draws: 3,
+    losses: 1,
+    points: 27,
+  },
+  {
+    rank: 3,
+    team: "Girona FC",
+    played: 12,
+    wins: 8,
+    draws: 2,
+    losses: 2,
+    points: 26,
+  },
+  {
+    rank: 4,
+    team: "Atlético Madrid",
+    played: 11,
+    wins: 8,
+    draws: 1,
+    losses: 2,
+    points: 25,
+  },
+  {
+    rank: 5,
+    team: "Athletic Club",
+    played: 12,
+    wins: 6,
+    draws: 3,
+    losses: 3,
+    points: 21,
+  },
+];
