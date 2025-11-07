@@ -18,7 +18,6 @@ const getMatchTime = (utcDate) => {
 export default function MatchCard({ match }) {
   const { id, homeTeam, awayTeam, score, status, utcDate } = match;
 
-  // --- New Status Logic ---
   const getStatusDisplay = () => {
     if (status === "FINISHED") {
       return <span className="font-bold text-light">FT</span>;
@@ -29,7 +28,6 @@ export default function MatchCard({ match }) {
     if (status === "PAUSED") {
       return <span className="font-bold text-accent">HT</span>;
     }
-    // For scheduled matches
     return (
       <>
         <span className="text-light">{getMatchDate(utcDate)}</span>
@@ -39,8 +37,11 @@ export default function MatchCard({ match }) {
   };
 
   return (
+    // --- THIS IS THE CHANGE ---
+    // We now pass the 'match' object in the 'state' prop
     <Link
       to={`/match/${id}`}
+      state={{ match }} // Pass the full match object
       className="block bg-secondary rounded-lg mb-2 transition-all hover:bg-slate-700"
     >
       <div className="flex items-center p-3">

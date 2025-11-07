@@ -1,18 +1,24 @@
 // src/components/PlayerCard.jsx
 import { Link } from "react-router-dom";
 
-// We now receive 'player', 'team', and optional 'stats' (goals, assists, etc.)
+// We receive 'player', 'team', and optional 'stats'
 export default function PlayerCard({ player, team, stats }) {
   
   const teamImage = team?.crest || "https://via.placeholder.com/150";
 
+  // We'll create a 'stateToPass' object.
+  // This will contain all the data our detail page needs.
+  const stateToPass = {
+    player, // The player object (id, name, nationality, etc.)
+    team,   // The team object (id, name, crest)
+    stats   // The stats object (goals, assists) - if it exists
+  };
+
   return (
-    // --- THIS IS THE CRITICAL CHANGE ---
-    // We pass the 'stats' object via the Link's 'state' prop
     <Link
       to={`/player/${player.id}`}
-      state={stats} // Pass stats to the PlayerDetail page
-      className="block bg-secondary hover:bg-gray-700 transition rounded-lg shadow-md overflow-hidden"
+      state={stateToPass} // <-- Pass the whole data object
+      className="block bg-secondary rounded-lg mb-2 transition-all hover:bg-slate-700"
     >
       <div className="flex justify-between items-center p-4">
         {/* Left side: Player Info */}
@@ -23,11 +29,11 @@ export default function PlayerCard({ player, team, stats }) {
             className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-accent bg-gray-700"
           />
           <div>
-            <h3 className="text-xl font-semibold text-white">{player.name}</h3>
+            <h3 className="text-xl font-semibold text-light">{player.name}</h3>
             <p className="text-gray-400">
               {team ? team.name : `Nationality: ${player.nationality}`}
             </p>
-            <p className="text-accent text-sm">{player.position}</p>
+            <p className="text-accent-dark text-sm">{player.position}</p>
           </div>
         </div>
 
