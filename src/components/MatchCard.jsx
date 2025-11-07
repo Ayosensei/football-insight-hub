@@ -1,74 +1,76 @@
 // src/components/MatchCard.jsx
 import { Link } from "react-router-dom";
 
-// Helper function to format the time
+// Helper to format date (e.g., "Nov 8")
+const getMatchDate = (utcDate) => {
+  if (!utcDate) return "";
+  const date = new Date(utcDate);
+  return date.toLocaleDateString([], { month: 'short', day: 'numeric' });
+};
+
+// Helper to format time (e.g., "15:00")
 const getMatchTime = (utcDate) => {
   if (!utcDate) return "TBA";
   const date = new Date(utcDate);
   return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 };
 
-// --- NEW Helper function to format the date ---
-const getMatchDate = (utcDate) => {
-  if (!utcDate) return "";
-  const date = new Date(utcDate);
-  // Formats to a short, readable date like "Nov 8"
-  return date.toLocaleDateString([], { month: 'short', day: 'numeric' });
-};
-
 export default function MatchCard({ match }) {
   const { id, homeTeam, awayTeam, score, status, utcDate } = match;
 
-  // Helper to determine what to show on the far right
-  const getRightSideDisplay = () => {
+  // --- New Status Logic ---
+  const getStatusDisplay = () => {
     if (status === "FINISHED") {
-      return "FT";
+      return <span className="font-bold text-light">FT</span>;
     }
     if (status === "IN_PLAY") {
-      return "Live";
+      return <span className="font-bold text-accent">LIVE</span>;
     }
     if (status === "PAUSED") {
-      return "HT";
+      return <span className="font-bold text-accent">HT</span>;
     }
-    // For scheduled matches, we'll return the time
-    return getMatchTime(utcDate);
+    // For scheduled matches
+    return (
+      <>
+        <span className="text-light">{getMatchDate(utcDate)}</span>
+        <span className="text-gray-400 text-xs">{getMatchTime(utcDate)}</span>
+      </>
+    );
   };
 
   return (
     <Link
       to={`/match/${id}`}
-      className="block bg-gray-800 hover:bg-gray-700 transition rounded-xl p-5 shadow-md mb-4 border border-gray-700"
+      className="block bg-secondary rounded-lg mb-2 transition-all hover:bg-slate-700"
     >
-      <div className="flex justify-between items-center">
-        {/* Left side — Teams */}
-        <div className="flex-1">
-          <div className="flex items-center gap-3 mb-2">
-            <img src={homeTeam.crest} alt={homeTeam.name} className="w-6 h-6" />
-            <h3 className="text-lg font-semibold text-white">{homeTeam.name}</h3>
+      <div className="flex items-center p-3">
+        
+        {/* Col 1: Status / Time */}
+        <div className="w-16 text-center flex flex-col items-center justify-center">
+          {getStatusDisplay()}
+        </div>
+
+        {/* Vertical Divider */}
+        <div className="w-px h-10 bg-gray-600"></div>
+
+        {/* Col 2: Teams */}
+        <div className="flex-1 px-4">
+          <div className="flex items-center gap-3 mb-1">
+            <img src={homeTeam.crest} alt={homeTeam.name} className="w-5 h-5" />
+            <span className="text-light font-semibold">{homeTeam.name}</span>
           </div>
           <div className="flex items-center gap-3">
-            <img src={awayTeam.crest} alt={awayTeam.name} className="w-6 h-6" />
-            <h3 className="text-lg font-semibold text-white">{awayTeam.name}</h3>
+            <img src={awayTeam.crest} alt={awayTeam.name} className="w-5 h-5" />
+            <span className="text-light font-semibold">{awayTeam.name}</span>
           </div>
         </div>
-
-        {/* Middle — Score */}
-        <div className="text-center w-20">
-          <p className="text-2xl font-bold text-blue-300">
-            {/* We'll default score to 0-0 for scheduled matches */}
-            {score.fullTime.home ?? 0} - {score.fullTime.away ?? 0}
-          </p>
-          <p className={`text-xs ${status === 'IN_PLAY' ? 'text-green-400' : 'text-gray-400'}`}>
-            {status.replace("_", " ")}
-          </p>
+        
+        {/* Col 3: Score */}
+        <div className="w-16 text-center text-light font-bold text-lg">
+          <div>{score.fullTime.home ?? 0}</div>
+          <div>{score.fullTime.away ?? 0}</div>
         </div>
-
-        {/* Right side — Date & Time */}
-        <div className="w-16 text-right">
-          {/* --- ADDED THE DATE HERE --- */}
-          <p className="text-gray-300 text-sm font-semibold">{getMatchDate(utcDate)}</p>
-          <p className="text-gray-400 text-xs">{getRightSideDisplay()}</p>
-        </div>
+        
       </div>
     </Link>
   );

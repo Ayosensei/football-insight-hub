@@ -51,7 +51,7 @@ export default function Home({ fixtures, loading: loadingFixtures, error: errorF
         {/* --- Main Column (Matches) --- */}
         <div className="lg:col-span-2">
           {/* Updated title */}
-          <h2 className="text-3xl font-semibold mb-6 text-blue-400">Top Matches</h2>
+          <h2 className="text-3xl font-semibold mb-6 text-accent">Top Matches</h2>
           
           {loadingFixtures ? (
             <p className="text-lg text-gray-400">Loading matches...</p>
@@ -70,7 +70,7 @@ export default function Home({ fixtures, loading: loadingFixtures, error: errorF
         <div className="lg:col-span-1 space-y-6">
           {/* Standings Widget */}
           <div>
-            <h2 className="text-2xl font-semibold mb-4 text-blue-400">Standings</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-accent">Standings</h2>
             {loadingWidgets ? (
               <p className="text-gray-400">Loading table...</p>
             ) : (
@@ -80,7 +80,7 @@ export default function Home({ fixtures, loading: loadingFixtures, error: errorF
 
           {/* Top Scorers Widget */}
           <div>
-            <h2 className="text-2xl font-semibold mb-4 text-blue-400">Top Scorers</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-accent">Top Scorers</h2>
             {loadingWidgets ? (
               <p className="text-gray-400">Loading scorers...</p>
             ) : (

@@ -60,13 +60,13 @@ export default function MatchDetail() {
   return (
     <div className="p-6 text-gray-200 max-w-4xl mx-auto">
       {/* Header: Teams & Score */}
-      <div className="flex justify-between items-center bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+      <div className="flex justify-between items-center bg-secondary p-6 rounded-lg shadow-md mb-6">
         <div className="flex items-center gap-4 text-center">
           <img src={homeTeam.crest} alt={homeTeam.name} className="w-16 h-16" />
           <h2 className="text-3xl font-bold text-white">{homeTeam.name}</h2>
         </div>
         <div className="text-center">
-          <p className="text-5xl font-bold text-blue-300">
+          <p className="text-5xl font-bold text-accent">
             {score.fullTime.home ?? 0} - {score.fullTime.away ?? 0}
           </p>
           <p className="text-gray-400 text-sm mt-1">{status.replace("_", " ")}</p>
@@ -78,7 +78,7 @@ export default function MatchDetail() {
       </div>
 
       {/* Match Info */}
-      <div className="bg-gray-800 p-4 rounded-lg shadow-md mb-6">
+      <div className="bg-secondary p-4 rounded-lg shadow-md mb-6">
         <h3 className="text-xl font-semibold text-white mb-3">Match Info</h3>
         <p className="text-gray-300">
           <strong>Venue:</strong> {venue}
@@ -86,7 +86,7 @@ export default function MatchDetail() {
       </div>
 
       {/* Lineups */}
-      <div className="bg-gray-800 p-4 rounded-lg shadow-md">
+      <div className="bg-secondary p-4 rounded-lg shadow-md">
         <h3 className="text-xl font-semibold text-white mb-3">Lineups</h3>
 
         {/* --- THIS IS THE FIX --- */}
@@ -95,7 +95,7 @@ export default function MatchDetail() {
           <div className="flex justify-between">
             {/* Home Lineup */}
             <div>
-              <h4 className="text-lg font-semibold text-blue-300 mb-2">{homeTeam.name}</h4>
+              <h4 className="text-lg font-semibold text-accent mb-2">{homeTeam.name}</h4>
               <ul className="text-gray-300">
                 {lineups.home.map((player) => (
                   <li key={player.id} className="mb-1">{player.name}</li>
@@ -104,7 +104,7 @@ export default function MatchDetail() {
             </div>
             {/* Away Lineup */}
             <div>
-              <h4 className="text-lg font-semibold text-blue-300 mb-2">{awayTeam.name}</h4>
+              <h4 className="text-lg font-semibold text-accent mb-2">{awayTeam.name}</h4>
               <ul className="text-gray-300">
                 {lineups.away.map((player) => (
                   <li key={player.id} className="mb-1">{player.name}</li>

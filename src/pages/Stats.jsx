@@ -62,7 +62,7 @@ export default function Stats() {
 
   return (
     <div className="p-6 text-gray-200 max-w-4xl mx-auto">
-      <h2 className="text-3xl font-semibold mb-6 text-blue-400">Player Stats</h2>
+      <h2 className="text-3xl font-semibold mb-6 text-accent">Player Stats</h2>
       
       {/* 3. Render the two tables */}
       

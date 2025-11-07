@@ -40,7 +40,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="font-sans bg-gray-950 min-h-screen">
+    <div className="font-sans min-h-screen">
       <Navbar />
 
       <Routes>

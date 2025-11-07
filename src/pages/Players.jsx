@@ -77,7 +77,7 @@ export default function Players() {
 
   return (
     <div className="p-6 text-gray-200">
-      <h2 className="text-3xl font-semibold mb-6 text-blue-400">View Team Squads</h2>
+      <h2 className="text-3xl font-semibold mb-6 text-accent">View Team Squads</h2>
 
       {/* Team Selection Dropdown */}
       <div className="mb-6 max-w-md">
@@ -88,7 +88,7 @@ export default function Players() {
           id="team-select"
           value={selectedTeam}
           onChange={handleTeamChange}
-          className="w-full bg-gray-700 text-white p-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full bg-secondary text-white p-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-accent"
         >
           <option value="">-- Please select a team --</option>
           {/* 4. Map over the standings array to get team data */}
